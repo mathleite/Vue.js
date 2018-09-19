@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Computed and Watch Vue.js</title>
+</head>
+<body>
+
+<div id="app">
+  <h1>{{ title }}</h1>
+  {{ fullName }} <br/>
+
+</div>
+<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+      title: "Test Vue Js",
+      user: {
+        firstName: "",
+        lastName: "",
+      }
+    },
+    computed: {
+      fullName() {
+        return this.user.firstName + ' ' + this.user.lastName;
+      }
+    },
+    watch: {
+      user(oldValue, newValue) {
+        console.log('oldValue', oldValue);
+        console.log('newValue', newValue);
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
