@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Training Vue.js</title>
+  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="app">
+  <form>
+    <div class="form-group">
+      <h1 style="margin-left: 25px;">{{title.h1}}</h1>
+      <label style="margin-left: 25px;">Name</label><br/>
+      <input type="text" style="margin-left: 25px;" class="form-group-sm" placeholder="Your Name" v-model="user.name">
+
+      <br/><br/>
+      <label style="margin-left: 25px;">Last name</label><br/>
+      <input type="text" style="margin-left: 25px;" class="form-control-sm" placeholder="Last name"
+             v-model="user.lastName">
+
+      <br/><br/>
+      <label style="margin-left: 25px;">Age</label><br/>
+      <input type="text" style="margin-left: 25px;" class="form-control-sm" placeholder="Your age" v-model="user.age">
+
+      <br/><br/>
+      <label style="margin-left: 25px;">Contact</label><br/>
+      <input style="margin-left: 25px;" type="email" placeholder="Email address" class="form-control-sm"
+             v-model="user.contact">
+    </div>
+  </form>
+
+  <hr/>
+  <h2 style="margin-left: 25px;">{{title.h2}}</h2>
+  <form>
+    <div class="form-group">
+      <label style="margin-left: 25px;">Name</label><br/>
+      <input type="text" style="margin-left: 25px;" class="form-group-sm" placeholder="Your Name" v-model="user.name">
+
+      <br/><br/>
+      <label style="margin-left: 25px;">Last name</label><br/>
+      <input type="text" style="margin-left: 25px;" class="form-control-sm" placeholder="Last name"
+             v-model="user.lastName">
+
+      <br/><br/>
+      <label style="margin-left: 25px;">Age</label><br/>
+      <input type="text" style="margin-left: 25px;" class="form-control-sm" placeholder="Your age" v-model="user.age">
+
+      <br/><br/>
+      <label style="margin-left: 25px;">Contact</label><br/>
+      <input style="margin-left: 25px;" type="email" placeholder="Email address" class="form-control-sm"
+             v-model="user.contact">
+      <br/><br/>
+    </div>
+  </form>
+</div>
+
+<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+      title: {
+        h1: "User information",
+        h2: "Mirror information"
+      },
+      user: {
+        name: "",
+        lastName: "",
+        age: null,
+        contact: "",
+      }
+    },
+    methods: {}
+  });
+</script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
