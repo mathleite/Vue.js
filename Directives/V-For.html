@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>V - For Directive</title>
+</head>
+<body>
+<div id="app">
+  <h1>{{ title }}</h1>
+  <ul>
+    <li v-for="(languages, key) in languages">{{ key }} - {{ languages.name }}</li>
+  </ul>
+</div>
+
+<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+      title: "Test Vue Js",
+      languages: [
+        {name: "Js"},
+        {name: "PHP"},
+        {name: "Java"},
+        {name: "Python"},
+      ]
+    }
+  });
+</script>
+</body>
+</html>

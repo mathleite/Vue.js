@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>V - Model Directive</title>
+</head>
+<body>
+<div id="app">
+  <h1>{{ title }}</h1>
+
+  <form action="">
+
+    <label for="">Name:</label><br/>
+    <input type="text" v-model="name">
+
+    <br/><br/>
+    <label for="">Last name:</label><br/>
+    <input type="text" v-model="lastName">
+
+    <br/><br/>
+    <label for="">Contact:</label><br/>
+    <input type="text" v-model="contact" placeholder="Email address">
+
+    <br/><br/>
+    <button type="submit" value="Send">Send</button>
+  </form>
+
+  <hr/>
+
+  Name: {{ name }}<br/>
+  Last name: {{ lastName }}<br/>
+  Contact: {{ contact }}
+
+</div>
+<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+      title: "Test Vue Js",
+      name: "",
+      lastName: "",
+      contact: ""
+    }
+  });
+</script>
+</body>
+</html>

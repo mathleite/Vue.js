@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Directives II</title>
+</head>
+<body>
+
+<div id="app">
+  <h1>{{ title }}</h1>
+  <div v-if="user.id > 0">
+    Id: {{ user.id}},<br />
+    Profession: {{user.profession}}
+    {{user.name}}
+  </div>
+  <div v-else>{{userError.message}}</div>
+</div>
+
+<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+      title: "Hello, World !",
+      message: "KKKKKKKKKKKKK ZAPPPPPPPP",
+      userError: {
+        message: "No users found"
+      },
+      user: {
+        id: 1,
+        name: "Marquinhos",
+        profession: "Relâmpago"
+      }
+    }
+  });
+</script>
+</body>
+</html>

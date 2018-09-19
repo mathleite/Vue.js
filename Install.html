@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Install Vue.Js</title>
+</head>
+<body>
+<div id="app">
+  <h1>{{ title }}</h1>
+</div>
+<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+      title: "Test Vue Js"
+    }
+  });
+</script>
+
+</body>
+</html>
