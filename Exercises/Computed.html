@@ -27,12 +27,6 @@
       fullName() {
         return this.user.firstName + ' ' + this.user.lastName;
       }
-    },
-    watch: {
-      user(oldValue, newValue) {
-        console.log('oldValue', oldValue);
-        console.log('newValue', newValue);
-      }
     }
   });
 </script>
