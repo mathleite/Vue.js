@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ROUTES - Js</title>
+  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <br /><br />
+    <div class="container">
+      <h1 href="title">{{ title }}</h1>
+      <ul>
+        <li><router-link :to="{ name: 'transformers' }"><span>Transformers</span></router-link></li>
+        <li><router-link :to="{ name: 'got' }"><span>Game of Thrones</span></router-link></li>
+      </ul>
+      <router-view></router-view>
+    </div>
+  </div>
+<template id="transformers">
+  <ul>
+    <li>Optmus Prime</li>
+    <li>Bumble Bee</li>
+    <li>Megatron</li>
+  </ul>
+</template>
+
+<template id="got">
+  <ul>
+    <li>Sei lá quem</li>
+    <li>Piorou</li>
+    <li>Ela mesmo</li>
+  </ul>
+</template>
+
+<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+<script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+<script>
+  let Transformer = Vue.component('transformer', {
+    template: '#transformers',
+  });
+
+  let Got = Vue.component('got', {
+    template: '#got',
+  });
+
+  let router = new VueRouter({
+    mode: 'history',
+    routes: [
+      { path: '/transformers', name: 'transformers', component: Transformer },
+      { path: '/got', name: 'got', component: Got }
+    ]
+  });
+
+  let app = new Vue({
+    el: '#app',
+    router,
+    data: {
+      title: 'Vue js',
+    },
+  });
+</script>
+</body>
+</html>
