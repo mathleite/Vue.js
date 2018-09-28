@@ -10,8 +10,10 @@
     <br /><br />
     <div class="container">
       <h1 href="title">{{ title }}</h1>
-      <router-link to="/transformers"><span>Transformers</span></router-link>
-      <router-link to="/got"><span>Game of Thrones</span></router-link>
+      <ul>
+        <li><router-link :to="{ name: 'transformers' }"><span>Transformers</span></router-link></li>
+        <li><router-link :to="{ name: 'got' }"><span>Game of Thrones</span></router-link></li>
+      </ul>
       <router-view></router-view>
     </div>
   </div>
@@ -44,9 +46,10 @@
   });
 
   let router = new VueRouter({
+    mode: 'history',
     routes: [
-      { path: '/transformers', component: Transformer },
-      { path: '/got', component: Got }
+      { path: '/transformers', name: 'transformers', component: Transformer },
+      { path: '/got', name: 'got', component: Got }
     ]
   });
 
