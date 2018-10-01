@@ -18,38 +18,119 @@
     </div>
   </div>
 <template id="transformers">
-  <ul>
-    <li>Optmus Prime</li>
-    <li>Bumble Bee</li>
-    <li>Megatron</li>
-  </ul>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h4>Transformers</h4>
+        <ul>
+          <li
+            v-for="item in transformers"
+          >
+            <router-link
+              :to="{ name: 'transformersContent',
+              params: { name: item.slug }}"
+            >
+              {{ item.name }}
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <router-view></router-view>
+      </div>
+    </div>
+  </div>
 </template>
 
 <template id="got">
-  <ul>
-    <li>Sei lá quem</li>
-    <li>Piorou</li>
-    <li>Ela mesmo</li>
-  </ul>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+      <h4>Game of Thrones</h4>
+        <ul>
+          <li
+            v-for="item in got"
+          >
+            <router-link
+              :to="{ name: 'gotContent',
+              params: { name: item.slug }}"
+            >
+              {{ item.name }}
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <router-view></router-view>
+      </div>
+    </div>
+  </div>
 </template>
 
+<template id="transformersContent">
+<div>
+  <h3>Content:</h3>
+  {{ $route.params.name }}
+</div>
+</template>
+
+<template id="gotContent">
+<div>
+  <h3>Content:</h3>
+  {{ $route.params.name }}
+</div>
+</template>
 <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
 <script>
-  let Transformer = Vue.component('transformer', {
+  let Transformers = Vue.component('transformers', {
     template: '#transformers',
+    data() {
+      return {
+        transformers: [
+          { name: 'Optmus Prime', slug: 'optmus-prime' },
+          { name: 'Bumble Bee', slug: 'bumble-bee' },
+          { name: 'Megatron', slug: 'megatron' },
+        ],
+      };
+    },
   });
 
   let Got = Vue.component('got', {
     template: '#got',
+    data() {
+      return {
+        got: [
+          { name: 'Daenerys Targaryen', slug: 'daenerys' },
+          { name: 'Tyrion Lannister', slug: 'tyrion' },
+          { name: 'Arya Stark', slug: 'Arya' },
+        ],
+      };
+    },
+  });
+
+  let TransformersContent = Vue.component('transformersContent', {
+    template: '#transformersContent',
+  });
+
+  let GotContent = Vue.component('gotContent', {
+    template: '#gotContent',
   });
 
   let router = new VueRouter({
     mode: 'history',
     routes: [
-      { path: '/transformers', name: 'transformers', component: Transformer },
-      { path: '/got', name: 'got', component: Got }
+      { path: '/transformers', name: 'transformers', component: Transformers,
+        children: [
+          { path: ':name', name: 'transformersContent', component: TransformersContent },
+        ],
+      },
+      { path: '/got', name: 'got', component: Got,
+        children: [
+          { path: ':name', name: 'gotContent', component: GotContent },
+        ],
+      }
     ]
   });
 
@@ -57,7 +138,7 @@
     el: '#app',
     router,
     data: {
-      title: 'Vue js',
+      title: 'Router vue js',
     },
   });
 </script>
