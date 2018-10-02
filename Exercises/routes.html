@@ -13,6 +13,7 @@
       <ul>
         <li><router-link :to="{ name: 'transformers' }"><span>Transformers</span></router-link></li>
         <li><router-link :to="{ name: 'got' }"><span>Game of Thrones</span></router-link></li>
+        <router-link :to="{ name: 'index' }"><span style="color: #a94442">Back to index</span></router-link>
       </ul>
       <router-view></router-view>
     </div>
@@ -21,7 +22,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <h4>Transformers</h4>
+        <h2>Transformers</h2>
         <ul>
           <li
             v-for="item in transformers"
@@ -46,7 +47,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-      <h4>Game of Thrones</h4>
+      <h2>Game of Thrones</h2>
         <ul>
           <li
             v-for="item in got"
@@ -70,14 +71,19 @@
 <template id="transformersContent">
 <div>
   <h3>Content:</h3>
-  {{ $route.params.name }}
+  <ul>
+    <li>{{ $route.params.name }}</li>
+  </ul>
+
 </div>
 </template>
 
 <template id="gotContent">
 <div>
   <h3>Content:</h3>
-  {{ $route.params.name }}
+  <ul>
+    <li>{{ $route.params.name }}</li>
+  </ul>
 </div>
 </template>
 <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
@@ -130,8 +136,9 @@
         children: [
           { path: ':name', name: 'gotContent', component: GotContent },
         ],
-      }
-    ]
+      },
+      { path: '/vue.js/Exercises/routes.html', name: 'index' },
+    ],
   });
 
   let app = new Vue({
