@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ROUTES - Js</title>
+  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <h1>{{ titles.index }}</h1>
+      <ul>
+        <li>
+          <router-link :to="{ name: 'registry' }"><span>{{ titles.registry }}</span></router-link>
+        </li>
+        <router-view></router-view>
+      </ul>
+      <router-link :to="{ name: 'index' }"><span style="color: #a94442;">Back</span></router-link>
+    </div>
+  </div>
+  <template id="registry-control">
+    <div>
+      <form>
+        <h1>{{ registry.name }}</h1>
+        <input v-model="registry.description" style="width: 30%;" class="form-control" placeholder="Wtf registry">
+        <h4>{{ clone.name }}</h4>
+        <input v-model="registry.description" style="width: 30%;" class="form-control" placeholder="Wtf registry">
+      </form>
+    </div>
+  </template>
+<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+<script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+<script>
+
+  let RegistryControl = Vue.component('registry-control', {
+    template: '#registry-control',
+    data() {
+      return {
+        registry: {
+          name: 'Registry',
+          description: '',
+        },
+        clone: {
+          name: 'Clone',
+        },
+      };
+    },
+  });
+
+
+  let router = new VueRouter({
+    mode: 'history',
+    routes: [
+      { path: '/registry', name: 'registry', component: RegistryControl },
+      { path: '/vue.js/Exercises/Routes2.0.html?_ijt=2uuqdlnla0458ffhut5gh3218o', name: 'index' }
+    ],
+  });
+
+  let app = new Vue({
+    el: '#app',
+    router,
+    data: {
+      titles: {
+        index: 'Index',
+        registry: 'Registry',
+      },
+      registry: {
+        description: "",
+      }
+    },
+  });
+</script>
+</body>
+</html>
